@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Trippin</string>
+    <string name="skip">Skip</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="privacy">By continuing, you agree to our \n Terms of Service, Privacy Policy, Content Policy</string>
+    <string name="login_text">Explore New\nPlace With Us</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="signup">SignUp</string>
+    <string name="don_t_have_an_account">Don\'t have an Account?</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="signup_text"><![CDATA[Create Account & Explore]]></string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="login_here">Login Here</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
