@@ -9,9 +9,14 @@
     <string name="signup">SignUp</string>
     <string name="don_t_have_an_account">Don\'t have an Account?</string>
     <string name="password">Password</string>
+    <string name="name">Name</string>
     <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="mobileno">Mobile No</string>
     <string name="signup_text"><![CDATA[Create Account & Explore]]></string>
     <string name="re_enter_password">Re-enter Password</string>
     <string name="login_here">Login Here</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="search_hint">Search places, restraunts, etc</string>
+    <string name="signup_privacy">You agree to our Terms of Service Privacy Policy Content Policy</string>
 </resources>
