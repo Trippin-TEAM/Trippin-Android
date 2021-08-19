@@ -19,4 +19,6 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="search_hint">Search places, restraunts, etc</string>
     <string name="signup_privacy">You agree to our Terms of Service Privacy Policy Content Policy</string>
+    <string name="edit">Edit</string>
+    <string name="place_image">Place Image</string>
 </resources>

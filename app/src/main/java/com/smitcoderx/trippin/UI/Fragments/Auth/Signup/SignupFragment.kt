@@ -11,7 +11,6 @@ import com.smitcoderx.trippin.API.ApiClient
 import com.smitcoderx.trippin.R
 import com.smitcoderx.trippin.Utils.Constants.TAG
 import com.smitcoderx.trippin.databinding.FragmentSignupBinding
-import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -29,11 +28,11 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
     }
 
     private fun signup() {
-        val username =  binding.tiUsername.editText!!.text.toString()
-        val password =  binding.tiSignupPassword.editText!!.text.toString()
-        val name =  binding.tiName.editText!!.text.toString()
-        val email =  binding.tiSignupEmail.editText!!.text.toString()
-        val mobileNo =  binding.tiMobileno.editText!!.text.toString()
+        val username = binding.tiUsername.editText!!.text.toString()
+        val password = binding.tiSignupPassword.editText!!.text.toString()
+        val name = binding.tiName.editText!!.text.toString()
+        val email = binding.tiSignupEmail.editText!!.text.toString()
+        val mobileNo = binding.tiMobileno.editText!!.text.toString()
 
         lifecycleScope.launchWhenCreated {
             val response = try {
@@ -46,7 +45,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
                 return@launchWhenCreated
             }
 
-            if(response.isSuccessful && response.body() != null) {
+            if (response.isSuccessful && response.body() != null) {
                 val register = response.body()
                 Snackbar.make(requireView(), register!!.message, Snackbar.LENGTH_SHORT).show()
                 val action = SignupFragmentDirections.actionSignupFragmentToLoginFragment()

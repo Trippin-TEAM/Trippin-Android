@@ -1,16 +1,16 @@
 package com.smitcoderx.trippin.API
 
-import com.smitcoderx.trippin.Model.Login
-import com.smitcoderx.trippin.Model.Register
-import com.smitcoderx.trippin.Model.User
+import com.smitcoderx.trippin.Model.Auth.Login
+import com.smitcoderx.trippin.Model.Auth.Register
+import com.smitcoderx.trippin.Model.Places.Places
+import com.smitcoderx.trippin.Model.User.User
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface TrippinApi {
-
-    companion object {
-        const val BASE_URL = "https://trippin-users.herokuapp.com/"
-    }
 
     @POST("login")
     suspend fun loginUser(
@@ -30,6 +30,10 @@ interface TrippinApi {
     @GET("me")
     suspend fun getMe(
         @Header("x-access-token") token: String
-    ) : Response<User>
+    ): Response<User>
 
+    @GET("places")
+    suspend fun getPlaces(
+        @Query("city") city: String
+    ): Response<Places>
 }

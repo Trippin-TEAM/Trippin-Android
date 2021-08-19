@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.smitcoderx.trippin.API.ApiClient
 import com.smitcoderx.trippin.R
 import com.smitcoderx.trippin.Utils.Constants.TAG
@@ -21,8 +20,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
-
-
 
         binding.btnLogin.setOnClickListener {
             loginApi()
