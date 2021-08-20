@@ -1,5 +1,9 @@
 package com.smitcoderx.trippin.Model.Places
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class PlacesItem(
     val _id: String,
     val address: String,
@@ -11,4 +15,4 @@ data class PlacesItem(
     val mobile_no: String,
     val name: String,
     val type: String
-)
+) : Parcelable

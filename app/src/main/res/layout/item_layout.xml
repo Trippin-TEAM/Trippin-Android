@@ -30,20 +30,20 @@
             tools:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/tv_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:background="@drawable/rating_bg"
-            android:padding="10dp"
-            android:gravity="center"
-            android:drawablePadding="10dp"
             android:layout_marginVertical="10dp"
+            android:background="@drawable/rating_bg"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:padding="10dp"
             android:textColor="@color/white"
             app:drawableLeftCompat="@drawable/ic_star"
             tools:text="0.0" />
 
     </androidx.cardview.widget.CardView>
-
 
     <TextView
         android:id="@+id/tv_place_name"
@@ -55,4 +55,15 @@
         app:layout_constraintStart_toStartOf="@+id/cardView2"
         app:layout_constraintTop_toBottomOf="@id/cardView2"
         tools:text="Place Name" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_place_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_place_name"
+        tools:text="Address and City" />
 </androidx.constraintlayout.widget.ConstraintLayout>

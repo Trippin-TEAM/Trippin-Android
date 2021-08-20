@@ -40,6 +40,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             }
         }
     }
+
     override fun onPause() {
         splashScope.cancel()
         super.onPause()

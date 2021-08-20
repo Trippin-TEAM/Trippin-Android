@@ -3,12 +3,10 @@ package com.smitcoderx.trippin.API
 import com.smitcoderx.trippin.Model.Auth.Login
 import com.smitcoderx.trippin.Model.Auth.Register
 import com.smitcoderx.trippin.Model.Places.Places
+import com.smitcoderx.trippin.Model.Review.Reviews
 import com.smitcoderx.trippin.Model.User.User
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface TrippinApi {
 
@@ -36,4 +34,9 @@ interface TrippinApi {
     suspend fun getPlaces(
         @Query("city") city: String
     ): Response<Places>
+
+    @GET("/get_reviews/{id}")
+    suspend fun getReviews(
+        @Path("id") id: String
+    ): Response<Reviews>
 }

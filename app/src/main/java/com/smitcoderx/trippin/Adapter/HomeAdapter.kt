@@ -1,5 +1,6 @@
 package com.smitcoderx.trippin.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -11,22 +12,37 @@ import com.smitcoderx.trippin.Model.Places.PlacesItem
 import com.smitcoderx.trippin.R
 import com.smitcoderx.trippin.databinding.ItemLayoutBinding
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class HomeAdapter(private val listener: SetOnClick) :
+    RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     inner class HomeViewHolder(private val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = differ.currentList[position]
+                    if (item != null) {
+                        listener.onClick(item)
+                    }
+                }
+            }
+        }
+
+        @SuppressLint("SetTextI18n")
         fun bind(places: PlacesItem) {
             binding.apply {
                 Glide.with(itemView)
                     .load(places.image)
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .placeholder(R.drawable.ic_placeholder)
-                    .error(R.drawable.main)
+                    .error(R.drawable.no_image)
                     .into(ivPlaces)
 
                 tvPlaceName.text = places.name
+                tvRating.text = places.average_ratings.toString()
+                tvAddress.text = "${places.address}, ${places.city}"
             }
         }
     }
@@ -48,7 +64,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
         return differ.currentList.size
     }
 
-    val difxferCallback = object : DiffUtil.ItemCallback<PlacesItem>() {
+    private val differCallback = object : DiffUtil.ItemCallback<PlacesItem>() {
         override fun areItemsTheSame(oldItem: PlacesItem, newItem: PlacesItem) =
             oldItem._id == newItem._id
 
@@ -56,5 +72,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             oldItem == newItem
     }
 
-    val differ = AsyncListDiffer(this, difxferCallback)
+    val differ = AsyncListDiffer(this, differCallback)
+
+    interface SetOnClick {
+        fun onClick(places: PlacesItem)
+    }
 }

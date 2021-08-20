@@ -50,13 +50,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_signup_email"
+        style="@style/textInputLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         app:hintAnimationEnabled="true"
         app:hintTextColor="@color/white"
-        android:layout_marginTop="10dp"
-        style="@style/textInputLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ti_name">
@@ -75,13 +75,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_username"
+        style="@style/textInputLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         app:hintAnimationEnabled="true"
         app:hintTextColor="@color/white"
-        android:layout_marginTop="10dp"
-        style="@style/textInputLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ti_signup_email">
@@ -100,13 +100,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_mobileno"
+        style="@style/textInputLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         app:hintAnimationEnabled="true"
         app:hintTextColor="@color/white"
-        android:layout_marginTop="10dp"
-        style="@style/textInputLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ti_username">
@@ -116,8 +116,8 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:hint="@string/mobileno"
-            android:maxLength="10"
             android:inputType="phone"
+            android:maxLength="10"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="18sp" />
@@ -126,13 +126,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_signup_password"
+        style="@style/textInputLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         app:hintAnimationEnabled="true"
         app:hintTextColor="@color/white"
-        style="@style/textInputLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ti_mobileno"
@@ -149,7 +149,6 @@
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.checkbox.MaterialCheckBox

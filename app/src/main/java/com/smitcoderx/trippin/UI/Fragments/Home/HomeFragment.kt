@@ -6,8 +6,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.smitcoderx.trippin.API.ApiClient
 import com.smitcoderx.trippin.Adapter.HomeAdapter
+import com.smitcoderx.trippin.Model.Places.PlacesItem
 import com.smitcoderx.trippin.R
 import com.smitcoderx.trippin.Utils.Constants.TAG
 import com.smitcoderx.trippin.Utils.PreferenceManager
@@ -15,7 +17,7 @@ import com.smitcoderx.trippin.databinding.FragmentHomeBinding
 import retrofit2.HttpException
 import java.io.IOException
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), HomeAdapter.SetOnClick {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var homeAdapter: HomeAdapter
@@ -55,16 +57,24 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             if (response.isSuccessful && response.body() != null) {
                 val place = response.body()
                 homeAdapter.differ.submitList(place!!)
+            } else {
+                Snackbar.make(binding.homeLayout, "NO Places to See!!", Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
     private fun setupRv() {
-        homeAdapter = HomeAdapter()
+        homeAdapter = HomeAdapter(this)
         binding.rvHome.apply {
             setHasFixedSize(true)
             adapter = homeAdapter
         }
+    }
+
+    override fun onClick(places: PlacesItem) {
+        val action = HomeFragmentDirections.actionHomeFragmentToPlaceFragment(places)
+        findNavController().navigate(action)
     }
 
 }
