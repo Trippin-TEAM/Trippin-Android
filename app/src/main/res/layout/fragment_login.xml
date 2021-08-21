@@ -24,6 +24,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_email"
+        style="@style/textInputLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -50,6 +51,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_password"
+        style="@style/textInputLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -92,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/ripple_btn_bg"
+        android:background="@drawable/ripple_btn_trans_bg"
         android:text="@string/log_in"
         android:textAllCaps="false"
         android:textColor="@color/white"

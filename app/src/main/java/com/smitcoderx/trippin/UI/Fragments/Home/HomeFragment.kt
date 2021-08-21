@@ -6,6 +6,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.google.android.material.snackbar.Snackbar
 import com.smitcoderx.trippin.API.ApiClient
 import com.smitcoderx.trippin.Adapter.HomeAdapter
@@ -28,6 +30,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeAdapter.SetOnClick {
 
         val prefs = PreferenceManager(requireContext())
 
+        getMe(prefs.getToken()!!)
         setupRv()
         getPlaces("Jodhpur")
         binding.tvSearch.setOnClickListener {
@@ -37,7 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeAdapter.SetOnClick {
         }
 
         binding.ivUserImage.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToUserFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToProfileFragment()
             findNavController().navigate(action)
         }
     }
@@ -69,6 +72,33 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeAdapter.SetOnClick {
         binding.rvHome.apply {
             setHasFixedSize(true)
             adapter = homeAdapter
+        }
+    }
+
+    private fun getMe(token: String) {
+        lifecycleScope.launchWhenCreated {
+            val response = try {
+                ApiClient.retrofitService.getMe(token)
+            } catch (e: IOException) {
+                Log.e(TAG, "getMe IO: ${e.message}")
+                return@launchWhenCreated
+            } catch (e: HttpException) {
+                Log.e(TAG, "getMe Http: ${e.message}")
+                return@launchWhenCreated
+            }
+
+            if (response.isSuccessful && response.body() != null) {
+                val user = response.body()
+
+                binding.apply {
+                    Glide.with(requireContext())
+                        .load(user!!.image)
+                        .centerCrop()
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .error(R.drawable.no_image)
+                        .into(ivUserImage)
+                }
+            }
         }
     }
 

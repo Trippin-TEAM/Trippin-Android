@@ -15,12 +15,12 @@
     </style>
 
     <style name="textInputLabel" parent="TextAppearance.AppCompat">
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/slate_black</item>
         <item name="android:textSize">20sp</item>
-        <item name="colorAccent">@color/white</item>
-        <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlActivated">@color/white</item>
-        <item name="colorControlHighlight">@color/white</item>
+        <item name="colorAccent">@color/slate_black</item>
+        <item name="colorControlNormal">@color/slate_black</item>
+        <item name="colorControlActivated">@color/slate_black</item>
+        <item name="colorControlHighlight">@color/slate_black</item>
     </style>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">

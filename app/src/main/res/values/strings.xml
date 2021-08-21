@@ -41,4 +41,14 @@
     <string name="_4">4</string>
     <string name="no_review">Oops! No Reviews Found. \nIt Never too late. Review Now</string>
     <string name="back">back</string>
+    <string name="profile">Profile</string>
+    <string name="update_profile_image">Update Profile Image</string>
+    <string name="add_your_description_here">Add Your Description Here....</string>
+    <string name="logout">Logout</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="submit">Submit</string>
+    <string name="save">Save</string>
+    <string name="bgimage">BgImage</string>
 </resources>

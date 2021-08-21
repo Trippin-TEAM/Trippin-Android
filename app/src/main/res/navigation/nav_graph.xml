@@ -26,11 +26,11 @@
             android:id="@+id/action_homeFragment_to_loginSignupFragment"
             app:destination="@id/loginSignupFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_userFragment"
-            app:destination="@id/userFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_placeFragment"
             app:destination="@id/placeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginSignupFragment"
@@ -66,11 +66,6 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/userFragment"
-        android:name="com.smitcoderx.trippin.UI.Fragments.User.UserFragment"
-        android:label="fragment_user"
-        tools:layout="@layout/fragment_user" />
-    <fragment
         android:id="@+id/placeFragment"
         android:name="com.smitcoderx.trippin.UI.Fragments.PlaceItem.PlaceFragment"
         android:label="fragment_place"
@@ -103,4 +98,21 @@
             android:name="id"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.smitcoderx.trippin.UI.Fragments.Profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_uploadImageActivity"
+            app:destination="@id/uploadImageActivity" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/uploadImageActivity"
+        android:name="com.smitcoderx.trippin.UI.UploadImageActivity"
+        android:label="activity_upload_image"
+        tools:layout="@layout/activity_upload_image" />
 </navigation>
