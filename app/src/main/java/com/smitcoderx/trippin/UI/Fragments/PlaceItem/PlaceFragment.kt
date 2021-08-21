@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -28,7 +29,6 @@ class PlaceFragment : Fragment(R.layout.fragment_place) {
         binding = FragmentPlaceBinding.bind(view)
 
         val placeArgs = args.place
-        val id = placeArgs._id
         binding.apply {
             Glide.with(requireContext())
                 .load(placeArgs.image)
@@ -45,44 +45,12 @@ class PlaceFragment : Fragment(R.layout.fragment_place) {
             tvType.text = placeArgs.type
             tvMobileNo.text = placeArgs.mobile_no
             tvEmail.text = placeArgs.email
-        }
-        setupRv()
-        getReviews(id)
-    }
 
-    private fun getReviews(id: String) {
-        lifecycleScope.launchWhenCreated {
-            val response = try {
-                ApiClient.retrofitService.getReviews(id)
-            } catch (e: IOException) {
-                Log.e(TAG, "getReview IO: ${e.message}")
-                return@launchWhenCreated
-            } catch (e: HttpException) {
-                Log.e(TAG, "getReview Http: ${e.message}")
-                return@launchWhenCreated
-            }
-
-            if (response.isSuccessful && response.body() != null) {
-                val reviews = response.body()
-                reviewAdapter.differ.submitList(reviews!!.reviews)
-            } else {
-                binding.rvReview.visibility = View.GONE
-                Snackbar.make(
-                    binding.profileLayout,
-                    "No Reviews Available for your Place",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+            fabReviews.setOnClickListener {
+                findNavController().navigate(PlaceFragmentDirections.actionPlaceFragmentToReviewFragment(placeArgs._id))
             }
         }
     }
 
-    private fun setupRv() {
-        reviewAdapter = ReviewAdapter()
-        binding.rvReview.apply {
-            setHasFixedSize(true)
-            isNestedScrollingEnabled = false
-            adapter = reviewAdapter
-        }
-    }
 
 }

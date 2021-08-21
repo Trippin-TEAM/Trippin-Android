@@ -28,4 +28,13 @@
     <string name="mail">Mail</string>
     <string name="reviews">Reviews</string>
     <string name="see_reviews">See Reviews</string>
+    <string name="add_review">Add Review</string>
+    <string name="add_your_review_here">Add your review here</string>
+    <string name="_5">5</string>
+    <string name="close_review">Close Review</string>
+    <string name="rating">Rating</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
 </resources>
