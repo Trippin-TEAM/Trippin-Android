@@ -98,5 +98,9 @@
         android:id="@+id/addReviewFragment"
         android:name="com.smitcoderx.trippin.UI.Fragments.Reviews.AddReviewFragment"
         android:label="fragment_add_review"
-        tools:layout="@layout/fragment_add_review" />
+        tools:layout="@layout/fragment_add_review" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </dialog>
 </navigation>

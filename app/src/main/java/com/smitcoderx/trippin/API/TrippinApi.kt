@@ -16,7 +16,7 @@ interface TrippinApi {
         @Query("password") password: String
     ): Response<Login>
 
-    @POST("register")
+    @POST("user_register")
     suspend fun registerUser(
         @Query("username") username: String,
         @Query("password") password: String,
@@ -35,8 +35,16 @@ interface TrippinApi {
         @Query("city") city: String
     ): Response<Places>
 
-    @GET("/get_reviews/{id}")
+    @GET("get_reviews/{id}")
     suspend fun getReviews(
         @Path("id") id: String
     ): Response<Reviews>
+
+    @POST("post_reviews")
+    suspend fun postReview(
+        @Header("x-access-token") token: String,
+        @Query("business_id") businessId: String,
+        @Query("review") review: String,
+        @Query("ratings") rating: Float
+    ): Response<Register>
 }

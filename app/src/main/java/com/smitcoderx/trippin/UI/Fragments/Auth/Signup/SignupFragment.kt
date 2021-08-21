@@ -13,6 +13,7 @@ import com.smitcoderx.trippin.Utils.Constants.TAG
 import com.smitcoderx.trippin.databinding.FragmentSignupBinding
 import retrofit2.HttpException
 import java.io.IOException
+import java.util.*
 
 class SignupFragment : Fragment(R.layout.fragment_signup) {
 
@@ -23,12 +24,19 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         binding = FragmentSignupBinding.bind(view)
 
         binding.btnSignup.setOnClickListener {
-            signup()
+            if (checkValidations()) {
+                binding.transparentLayout.visibility = View.VISIBLE
+                binding.loading.visibility = View.VISIBLE
+                signup()
+            } else {
+                Snackbar.make(requireView(), "Please Fill all the Fields", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
     private fun signup() {
-        val username = binding.tiUsername.editText!!.text.toString()
+        val username = binding.tiUsername.editText!!.text.toString().lowercase(Locale.getDefault())
         val password = binding.tiSignupPassword.editText!!.text.toString()
         val name = binding.tiName.editText!!.text.toString()
         val email = binding.tiSignupEmail.editText!!.text.toString()
@@ -47,12 +55,46 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
             if (response.isSuccessful && response.body() != null) {
                 val register = response.body()
-                Snackbar.make(requireView(), register!!.message, Snackbar.LENGTH_SHORT).show()
-                val action = SignupFragmentDirections.actionSignupFragmentToLoginFragment()
-                findNavController().navigate(action)
+                binding.transparentLayout.visibility = View.GONE
+                binding.loading.visibility = View.GONE
+                if (register!!.message == "user already exists") {
+                    Snackbar.make(
+                        requireView(),
+                        register.message.uppercase(Locale.getDefault()), Snackbar.LENGTH_LONG
+                    ).show()
+                } else {
+                    Snackbar.make(
+                        requireView(),
+                        register.message.uppercase(Locale.getDefault()), Snackbar.LENGTH_LONG
+                    ).show()
+                    findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToLoginFragment())
+                }
             }
 
         }
+    }
+
+    private fun checkValidations(): Boolean {
+        if (binding.tiSignupEmail.editText!!.text.isNullOrEmpty()) {
+            binding.tiSignupEmail.error = resources.getString(R.string.field_required)
+            return false
+        }
+        if (binding.tiUsername.editText!!.text.isNullOrEmpty()) {
+            binding.tiUsername.error = resources.getString(R.string.field_required)
+            return false
+        }
+        if (binding.tiMobileno.editText!!.text.isNullOrEmpty()) {
+            binding.tiMobileno.error = resources.getString(R.string.field_required)
+            return false
+        }
+        if (binding.tiSignupPassword.editText!!.text.isNullOrEmpty()) {
+            binding.tiSignupPassword.error = resources.getString(R.string.field_required)
+            return false
+        } else if (binding.tiSignupPassword.editText!!.text.length < 8) {
+            binding.tiSignupPassword.error = resources.getString(R.string.password_limit)
+            return false
+        }
+        return true
     }
 
 }

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.smitcoderx.trippin.R
+import com.smitcoderx.trippin.Utils.Constants.SPLASH_DELAY
 import com.smitcoderx.trippin.Utils.PreferenceManager
 import com.smitcoderx.trippin.databinding.FragmentSplashBinding
 import kotlinx.coroutines.*
@@ -28,13 +29,13 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         if (pref.getLoggedIn()) {
             splashScope.launch {
-                delay(3000)
+                delay(SPLASH_DELAY)
                 val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
                 findNavController().navigate(action)
             }
         } else {
             splashScope.launch {
-                delay(3000)
+                delay(SPLASH_DELAY)
                 val action = SplashFragmentDirections.actionSplashFragmentToLoginSignupFragment()
                 findNavController().navigate(action)
             }

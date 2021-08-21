@@ -2,6 +2,7 @@ package com.smitcoderx.trippin.Utils
 
 object Constants {
     const val SPLASH_DELAY = 3000L
+    const val SWIPE_DELAY = 1000L
     const val TAG = "TrippinLog"
     const val TOKEN = "ACCESS_TOKEN"
     const val LOGGEDIN = "USER_LOGGED"

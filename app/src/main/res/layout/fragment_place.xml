@@ -315,6 +315,8 @@
                 android:text="@string/app_name"
                 android:textColor="@color/transparent_black"
                 android:textSize="35sp"
+                android:textStyle="italic|bold|normal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view5" />
@@ -331,13 +333,13 @@
         android:padding="5dp"
         android:text="@string/see_reviews"
         android:textAllCaps="false"
-        app:icon="@drawable/ic_see_reviews"
-        app:iconTint="@color/white"
-        app:rippleColor="@color/transparent_white"
         android:textColor="@color/white"
         app:backgroundTint="@color/slate_black"
+        app:icon="@drawable/ic_see_reviews"
+        app:iconTint="@color/white"
         app:layout_anchor="@id/nested"
         app:layout_anchorGravity="bottom|center"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        app:rippleColor="@color/transparent_white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

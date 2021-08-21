@@ -23,6 +23,8 @@
     <string name="place_image">Place Image</string>
     <string name="description">Description</string>
     <string name="address">Address</string>
+    <string name="field_required">This Field is Required</string>
+    <string name="password_limit">Password must be minimum 8 characters</string>
     <string name="type">Type</string>
     <string name="call">Call</string>
     <string name="mail">Mail</string>
@@ -37,4 +39,6 @@
     <string name="_2">2</string>
     <string name="_3">3</string>
     <string name="_4">4</string>
+    <string name="no_review">Oops! No Reviews Found. \nIt Never too late. Review Now</string>
+    <string name="back">back</string>
 </resources>
