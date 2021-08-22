@@ -12,4 +12,6 @@ object Constants {
     const val REQUEST_PICK_IMAGE = 1
     const val REQUEST_PERMISSION = 100
     const val DEFAULT_BUFFER_SIZE = 2048
+    const val LOCATION_PERMS = 2
+    const val LOCATION_REQUEST = 3
 }

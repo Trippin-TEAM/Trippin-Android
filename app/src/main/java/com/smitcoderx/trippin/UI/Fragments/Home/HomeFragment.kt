@@ -14,7 +14,6 @@ import com.smitcoderx.trippin.Adapter.HomeAdapter
 import com.smitcoderx.trippin.Model.Places.PlacesItem
 import com.smitcoderx.trippin.R
 import com.smitcoderx.trippin.Utils.Constants.TAG
-import com.smitcoderx.trippin.Utils.PreferenceManager
 import com.smitcoderx.trippin.databinding.FragmentHomeBinding
 import retrofit2.HttpException
 import java.io.IOException
@@ -28,14 +27,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeAdapter.SetOnClick {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
-        val prefs = PreferenceManager(requireContext())
 
-        getMe(prefs.getToken()!!)
         setupRv()
         getPlaces("Jodhpur")
         binding.tvSearch.setOnClickListener {
-            prefs.logoutUser()
-            val action = HomeFragmentDirections.actionHomeFragmentToLoginSignupFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
             findNavController().navigate(action)
         }
 

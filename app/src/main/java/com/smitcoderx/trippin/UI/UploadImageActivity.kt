@@ -107,7 +107,7 @@ class UploadImageActivity : AppCompatActivity(), UploadRequestBody.UploadCallbac
                 photoFile?.also {
                     selectedImageUri = FileProvider.getUriForFile(
                         this,
-                        "com.example.android.fileprovider",
+                        "com.trippin.android.fileprovider",
                         it
                     )
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, selectedImageUri)

@@ -11,9 +11,12 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.smitcoderx.trippin.Model.Places.PlacesItem
 import com.smitcoderx.trippin.R
 import com.smitcoderx.trippin.databinding.ItemLayoutBinding
+import java.util.*
 
 class HomeAdapter(private val listener: SetOnClick) :
     RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+
+    private var unfilteredlist = listOf<PlacesItem>()
 
     inner class HomeViewHolder(private val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -77,4 +80,31 @@ class HomeAdapter(private val listener: SetOnClick) :
     interface SetOnClick {
         fun onClick(places: PlacesItem)
     }
+
+    fun modifyList(list: List<PlacesItem>) {
+        unfilteredlist = list
+        differ.submitList(list)
+    }
+
+    fun filter(query: CharSequence?) {
+        val list = mutableListOf<PlacesItem>()
+
+        // perform the data filtering
+        if (!query.isNullOrEmpty()) {
+            list.addAll(unfilteredlist.filter {
+                it.name.lowercase(Locale.getDefault()).contains(
+                    query.toString().lowercase(Locale.getDefault())
+                ) ||
+                        it.city.lowercase(Locale.getDefault()).contains(
+                            query.toString().lowercase(Locale.getDefault())
+                        )
+            })
+        } else {
+            list.addAll(unfilteredlist)
+        }
+
+        differ.submitList(list)
+    }
+
+
 }
